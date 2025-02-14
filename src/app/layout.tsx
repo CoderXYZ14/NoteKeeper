@@ -35,7 +35,12 @@ export default function RootLayout({
           {children}
         </Theme>
 
-        <Toaster theme="light" duration={2000} position="bottom-right" />
+        <Toaster
+          theme="light"
+          duration={2000}
+          position="bottom-right"
+          richColors
+        />
       </body>
     </html>
   );

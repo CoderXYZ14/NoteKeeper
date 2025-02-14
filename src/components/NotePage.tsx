@@ -1,8 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { Note } from "@/types/types";
-import { useTheme } from "next-themes";
-
 import { useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -10,6 +8,12 @@ import { Button } from "./ui/button";
 import { Plus } from "lucide-react";
 import NoteCard from "./NoteCard";
 import { toast } from "sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export default function NotePage() {
   const [notes, setNotes] = useState<Note[]>([]);
@@ -111,6 +115,47 @@ export default function NotePage() {
           />
         ))}
       </div>
+
+      <Dialog open={editingNote} onOpenChange={() => setEditingNote(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Edit Note</DialogTitle>
+          </DialogHeader>
+          {editingNote && (
+            <div className="space-y-4">
+              <Input
+                type="text"
+                placeholder="Title"
+                value={editingNote.title}
+                onChange={(e) =>
+                  setEditingNote((prev) =>
+                    prev ? { ...prev, title: e.target.value } : null
+                  )
+                }
+                className="text-lg font-medium"
+              />
+              <Textarea
+                placeholder="Take a note..."
+                value={editingNote.content}
+                onChange={(e) =>
+                  setEditingNote((prev) =>
+                    prev ? { ...prev, content: e.target.value } : null
+                  )
+                }
+                className="min-h-[200px]"
+              />
+              <div className="flex justify-end space-x-2">
+                <Button variant="outline" onClick={() => setEditingNote(null)}>
+                  Cancel
+                </Button>
+                <Button onClick={() => editingNote && updateNote(editingNote)}>
+                  Save
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </main>
   );
 }
