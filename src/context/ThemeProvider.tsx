@@ -1,11 +1,7 @@
 "use client";
 import { ThemeProvider } from "next-themes";
 
-export default function AuthProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Theme({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       {children}
