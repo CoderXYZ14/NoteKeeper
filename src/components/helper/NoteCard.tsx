@@ -1,5 +1,5 @@
 import { Note } from "@/types/types";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { PencilIcon, Trash2 } from "lucide-react";
 
 export default function NoteCard({
