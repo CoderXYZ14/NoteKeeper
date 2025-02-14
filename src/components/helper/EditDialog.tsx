@@ -44,10 +44,17 @@ export default function EditDialog({
               className="min-h-[200px]"
             />
             <div className="flex justify-end space-x-2">
-              <Button variant="outline" onClick={() => setEditingNote(null)}>
+              <Button
+                variant="outline"
+                onClick={() => setEditingNote(null)}
+                className="dark:bg-yellow-500"
+              >
                 Cancel
               </Button>
-              <Button onClick={() => editingNote && updateNote(editingNote)}>
+              <Button
+                onClick={() => editingNote && updateNote(editingNote)}
+                className="bg-yellow-500 dark:bg-white"
+              >
                 Save
               </Button>
             </div>

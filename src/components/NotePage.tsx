@@ -5,10 +5,9 @@ import { useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
-import { Edit, Plus } from "lucide-react";
-import NoteCard from "./helper/NoteCard";
+import { Plus, X } from "lucide-react";
 import { toast } from "sonner";
-import EditDialog from "./helper/EditDialog";
+import { NoteCard, EditDialog } from "./helper";
 
 export default function NotePage() {
   const [notes, setNotes] = useState<Note[]>([]);
@@ -94,8 +93,17 @@ export default function NotePage() {
             )}
           </div>
           {isExpanded && (
-            <div className="flex justify-end mt-4">
-              <Button onClick={addNote}>Add Note</Button>
+            <div className="flex justify-end mt-4 space-x-4">
+              <Button onClick={addNote} className="bg-yellow-500">
+                Add Note
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsExpanded(false)}
+              >
+                <X className="w-5 h-5" />
+              </Button>
             </div>
           )}
         </div>
