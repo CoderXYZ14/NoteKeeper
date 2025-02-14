@@ -7,7 +7,7 @@ import {
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
-import { EditDialogProps, Note } from "@/types/types";
+import { EditDialogProps } from "@/types/types";
 
 export default function EditDialog({
   editingNote,
